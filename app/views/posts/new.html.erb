@@ -1,0 +1,21 @@
+<%= stylesheet_link_tag 'new', :media => "all" %>
+
+<h1>CHAT</h1>
+
+<div class="post-container">
+<h2 class="title">新規投稿</h2>
+<%= form_for @post do |t| %>
+  <div class="field">
+    <%= t.label :投稿者 %>
+    <%= t.text_field :name, :size => 140 %>
+  </div>
+  
+  <div class="field">
+    <%= t.label :投稿内容 %>
+    <%= t.text_field :about, :size => 140 %>
+  </div>
+
+  <%= t.submit "投稿する" %>
+<% end %>
+<%= link_to "投稿一覧に戻る", posts_path %>
+</div>

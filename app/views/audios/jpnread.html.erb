@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag 'jpnread', :media => "all" %>
+
+<h2>文章読み上げ</h2>
+
+<div class="jpn">
+<div class="jpnr">
+<input type="text" id="text" name="text" value="" placeholder="読み上げたいテキストを入力してください" />
+<button onclick="readAloud()">読み上げる</button>
+</div>
+<p>上記テキスト(日本語)を読み上げます。<br>「読み上げる」ボタンをクリックしてください。</p>
+</div>
+
+<script>
+function readAloud() {
+  // テキストを取得
+  const text = document.getElementById("text").value
+
+  // ブラウザにWeb Speech API Speech Synthesis機能があるか判定
+  if ('speechSynthesis' in window) {
+    // 発言を設定
+    const uttr = new SpeechSynthesisUtterance()
+    uttr.text = text
+    // 発言を再生
+    window.speechSynthesis.speak(uttr)
+
+  } else {
+    alert('大変申し訳ありません。このブラウザは音声合成に対応していません。')
+  }
+}
+</script>

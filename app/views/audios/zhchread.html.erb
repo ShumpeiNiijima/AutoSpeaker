@@ -1,0 +1,42 @@
+<%= stylesheet_link_tag 'zhchread', :media => "all" %>
+
+<h2>Text-to-Speech</h2>
+
+<div class="zhch">
+<input type="text" id="text" name="text" value="" placeholder="输入中文。" />
+<button onclick="readAloud()">读</button>
+<p>上述的中文(简体字) 被读。<br>按一下"读"。</p>
+</div>
+
+<script>
+function readAloud() {
+  // テキストを取得
+  const text = document.getElementById("text").value
+
+  // ブラウザにWeb Speech API Speech Synthesis機能があるか判定
+  if ('speechSynthesis' in window) {
+    // 発言を設定
+    const uttr = new SpeechSynthesisUtterance()
+    
+    // テキストを設定
+    uttr.text = text
+
+    // 言語を設定
+    uttr.lang = 'zh-CN'
+
+    // 中国語に対応しているvoiceを設定
+    const voices = speechSynthesis.getVoices()
+    for (let i = 0; i < voices.length; i++) {
+        if (voices[i].lang === 'zh-CN') {
+            uttr.voice = voices[i]
+        }
+    }
+
+    // 発言を再生
+    window.speechSynthesis.speak(uttr)
+
+  } else {
+    alert('对不起。不能使用这服务在这浏览器。')
+  }
+}
+</script>

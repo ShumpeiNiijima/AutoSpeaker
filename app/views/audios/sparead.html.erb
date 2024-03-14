@@ -1,0 +1,42 @@
+<%= stylesheet_link_tag 'sparead', :media => "all" %>
+
+<h2>Text-to-Speech</h2>
+
+<div class="spa">
+<input type="text" id="text" name="text" value="" placeholder="Please enter the passage." />
+<button onclick="readAloud()">Leer</button>
+<p>The above passage(Español) is read out.<br>Click the button "Leer".</p>
+</div>
+
+<script>
+function readAloud() {
+  // テキストを取得
+  const text = document.getElementById("text").value
+
+  // ブラウザにWeb Speech API Speech Synthesis機能があるか判定
+  if ('speechSynthesis' in window) {
+    // 発言を設定
+    const uttr = new SpeechSynthesisUtterance()
+    
+    // テキストを設定
+    uttr.text = text
+
+    // 言語を設定
+    uttr.lang = 'es'
+
+    // スペイン語に対応しているvoiceを設定
+    const voices = speechSynthesis.getVoices()
+    for (let i = 0; i < voices.length; i++) {
+        if (voices[i].lang === 'es') {
+            uttr.voice = voices[i]
+        }
+    }
+
+    // 発言を再生
+    window.speechSynthesis.speak(uttr)
+
+  } else {
+    alert('Sorry for causing you concern. This service is not available on this browser.')
+  }
+}
+</script>

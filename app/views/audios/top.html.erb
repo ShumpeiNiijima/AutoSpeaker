@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag 'top', :media => "all" %>
+
+<div class="top-container">
+<h1>TOP</h1>
+
+<div class="welcome">
+<h2>WELCOME</h2>
+
+<h3><%= link_to "How to Use", audios_how_path %></h3>
+<p>(開発目的や使い方)</p>
+</div>
+
+<div class="tts">
+<h2>Text-to-Speech</h2>
+<p>(文章の読み上げ)</p>
+<div class="manylang">
+<%= link_to "日本語版", audios_jpnread_path %>
+<%= link_to "English version", audios_engread_path %>
+<%= link_to "中文版", audios_zhchread_path %>
+<%= link_to "Version française", audios_fraread_path %>
+<%= link_to "Deutsche version", audios_gerread_path %>
+<%= link_to "Русская версия", audios_rusread_path %>
+<%= link_to "Versión en español", audios_sparead_path %>
+<%= link_to "النسخة العربية", audios_arbread_path %>
+<%= link_to "한국어판", audios_korread_path %>
+<%= link_to "Italiano", audios_itaread_path %>
+</div>
+</div>
+
+<div class="chat">
+<h2>CHAT</h2>
+<p>(投稿)</p>
+<div class="logregi">
+<%= link_to "CHAT", posts_path %>
+</div>
+</div>
+</div>
